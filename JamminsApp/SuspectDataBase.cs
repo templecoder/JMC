@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace JamminsApp
@@ -45,14 +46,27 @@ namespace JamminsApp
             _rngGenerator = new Random();
         }
 
-        public Person GetSuspect()
+        public List<Person> CreateSuspectList(int amountOfSuspectsToFetch)
+        {
+            var listOfSuspects = new List<Person>();
+
+            for (int i = 0; i < amountOfSuspectsToFetch; i++)
+            {
+                var suspect = CreateRandomSuspect();
+                listOfSuspects.Add(suspect);
+            }
+
+            return listOfSuspects;
+        }
+
+        public Person CreateRandomSuspect()
         {
             var randomFirstName = FirstNames[_rngGenerator.Next(0, FirstNames.Length)];
             var randomLastName = LastNames[_rngGenerator.Next(0, LastNames.Length)];
             var randomLanguage = Languages[_rngGenerator.Next(0, Languages.Length)];
 
-            var randomAge = _rngGenerator.Next();
-            var randomIQ = _rngGenerator.Next();
+            var randomAge = _rngGenerator.Next(1, 101);
+            var randomIQ = _rngGenerator.Next(65, 161);
 
             var randomHasWeaponLicense = GetRandomBoolean();
 

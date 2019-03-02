@@ -6,17 +6,22 @@ namespace JamminsApp
 {
     public class Person
     {
-        protected string LastName;
-        protected string FirstName;
+        public string LastName;
+        public string FirstName;
 
         public int Age;
 
-        protected int IQ;
+        public int IQ;
 
-        protected bool HasWeaponLicence;
-        protected bool IsKgbAgent;
+        public bool HasWeaponLicence;
+        public bool IsKgbAgent;
 
-        protected string Language;
+        public string Language;
+
+        public Person()
+        {
+
+        }
 
         public Person(string firstName, string lastName, string language, bool hasWeaponLicense = false, int age = 0, int iq = 0)
         {
@@ -28,6 +33,17 @@ namespace JamminsApp
 
             Age = age;
             IQ = iq;
+        }
+
+        public string GetInfoDetails()
+        {
+            return $"First name: {FirstName} " +
+                $"Last name: {LastName} " +
+                $"Age: {Age} " +
+                $"IQ: {IQ} " +
+                $"Haslicence: {HasWeaponLicence} " +
+                $"Speaks languages: {Language}" +
+                $"IsAgent: {IsKgbAgent}";
         }
     }
 }
